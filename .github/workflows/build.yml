@@ -34,7 +34,7 @@ jobs:
           go build -o filebrowser
 
       - name: Upload built binary
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: filebrowser
           path: filebrowser
