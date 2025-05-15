@@ -2,13 +2,13 @@ name: Build Filebrowser
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -20,16 +20,19 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'   # Use Node 22 to match package.json requirement
 
-      - name: Install frontend dependencies
+      - name: Install pnpm
+        run: npm install -g pnpm@9
+
+      - name: Install frontend and build
         run: |
           cd frontend
-          npm install
-          npm run build
+          pnpm install
+          pnpm run build
           cd ..
 
-      - name: Build binary
+      - name: Build backend
         run: |
           go build -o filebrowser
 
@@ -37,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: filebrowser
-          path: filebrowser
+          path: ./filebrowser
