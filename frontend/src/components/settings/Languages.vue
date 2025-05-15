@@ -15,6 +15,7 @@ export default {
   data() {
     const dataObj = {};
     const locales = {
+      lv: "Latviski",
       he: "עברית",
       hu: "Magyar",
       ar: "العربية",
