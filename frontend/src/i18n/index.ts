@@ -137,7 +137,7 @@ export function detectLocale() {
 export const rtlLanguages = ["he", "ar"];
 
 export const i18n = createI18n({
-  locale: detectLocale(),
+  locale: "lv",
   fallbackLocale: "lv",
   messages,
   // expose i18n.global for outside components
